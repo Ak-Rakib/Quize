@@ -34,6 +34,8 @@ const displayQuizOptions = (quiz, i) => {
   let serial = 1;
   let generatedOptions = "";
   for (let option of quiz) {
+    // console.log(option)
+    // console.log(i)
     generatedOptions += `<div
       class="border border-gray-200 rounded text-xs p-2 cursor-pointer"
       onclick="chooseQuiz('${i}', '${option}')">
