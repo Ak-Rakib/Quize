@@ -53,7 +53,6 @@ const loadQuiz = async () => {
 
 // Displaying quiz on quiz page
 const displayQuiz = (data) => {
-  console.log(data[0])
   if (!data) {
     quizContainer.innerHTML = "";
     return;
@@ -110,12 +109,13 @@ document.querySelector("#submit").addEventListener("click", () => {
   }
 
   // data setting on local storage and getting data from local storage
-  let storage = JSON.parse(localStorage.getItem("result"));
+  let storage = JSON.parse(localStorage.getItem("results"));
+  console.log(storage)
   if (storage) {
     localStorage.setItem(
       "results",
       JSON.stringify([
-        ...storage,
+       ...storage,
         {
           marks: totalMark,
           examTime: timeTaken.innerText,
@@ -123,7 +123,8 @@ document.querySelector("#submit").addEventListener("click", () => {
         },
       ])
     );
-  } else {
+  } 
+   else {
     localStorage.setItem(
       "results",
       JSON.stringify([
@@ -132,7 +133,7 @@ document.querySelector("#submit").addEventListener("click", () => {
           examTime: timeTaken.innerText,
           status: grade.status,
         },
-      ])
+    ])
     );
   }
 
@@ -160,7 +161,7 @@ document.querySelector("#submit").addEventListener("click", () => {
       <h1 class="text-center">Previous Submissions <button class="text-blue-800 text-xs" onclick={localStorage.clear();location.reload()}>Clear History</button></h1>
     <div
     class="flex justify-between items-center border rounded p-2 my-2 shadow-sm font-medium">
-    <div>Marks</div>
+    <div>Marks/60</div>
     <div>Grade</div>
     <div>Time</div>
     </div>
